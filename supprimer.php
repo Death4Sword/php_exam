@@ -15,7 +15,7 @@ if (isset($_SESSION['id'])) {
                 $suppr_id = htmlspecialchars($_GET['id']);
                 $suppr = $bdd->prepare('DELETE FROM f_topics WHERE id = ?');
                 $suppr->execute(array($suppr_id));
-                header('Location: http://127.0.0.1/phplogin/');
+                header('Location: http://127.0.0.1/php_exam/');
             }
         } else {
             die('Erreur : l\'article n\'existe pas...');

@@ -13,7 +13,7 @@ $articles = $bdd->query('SELECT * FROM f_topics ORDER BY date_heure_creation DES
 <body>
     <ul>
         <?php while ($a = $articles->fetch()) { ?>
-            <li><a href="article.php?id=<?= $a['id'] ?>"><?= $a['sujet'] ?></a> | <a href="redaction.php?edit=<?= $a['id'] ?>">Modifier</a> | <a href="supprimer.php?id=<?= $a['id'] ?>">Supprimer</a></li>
+            <li><a href="details.php?id=<?= $a['id'] ?>"><?= $a['sujet'] ?></a> | <a href="redaction.php?edit=<?= $a['id'] ?>">Modifier</a> | <a href="supprimer.php?id=<?= $a['id'] ?>">Supprimer</a></li>
         <?php } ?>
         <ul>
 </body>
