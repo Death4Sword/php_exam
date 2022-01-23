@@ -1,6 +1,6 @@
 <?php
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=forum_php;charset=utf8", "root", "");
-$articles = $bdd->query('SELECT * FROM f_topics ORDER BY date_heure_creation DESC');
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=php_exam;charset=utf8", "root", "");
+$articles = $bdd->query('SELECT * FROM articles ORDER BY date_heure_creation DESC');
 ?>
 <!DOCTYPE html>
 <html>

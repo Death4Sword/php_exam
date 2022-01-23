@@ -1,7 +1,7 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=forum_php;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam;charset=utf8', 'root', '');
 session_start();
-$requser = $bdd->prepare("SELECT * FROM membres WHERE id = ?");
+$requser = $bdd->prepare("SELECT * FROM users WHERE id = ?");
 $requser->execute(array($_SESSION['id']));
 $user = $requser->fetch();
 // var_dump($user);
@@ -10,7 +10,7 @@ if (isset($_SESSION['id']) and $user['admin'] != 0) {
 
         if (isset($_GET['supprime']) and !empty($_GET['supprime'])) {
             $supprime = (int) $_GET['supprime'];
-            $req = $bdd->prepare('DELETE FROM membres WHERE id = ?');
+            $req = $bdd->prepare('DELETE FROM users WHERE id = ?');
             $req->execute(array($supprime));
         }
     }
@@ -18,15 +18,15 @@ if (isset($_SESSION['id']) and $user['admin'] != 0) {
 
         if (isset($_GET['supprime']) and !empty($_GET['supprime'])) {
             $supprime = (int) $_GET['supprime'];
-            $req = $bdd->prepare('DELETE FROM f_topics WHERE id = ?');
+            $req = $bdd->prepare('DELETE FROM articles WHERE id = ?');
             $req->execute(array($supprime));
         }
     }
 } else {
     $message = "Vous n'êtes pas autorisé ici.";
 }
-$membres = $bdd->query('SELECT * FROM membres ORDER BY id DESC LIMIT 0,5');
-$articles = $bdd->query('SELECT * FROM f_topics ORDER BY id DESC LIMIT 0,5');
+$membres = $bdd->query('SELECT * FROM users ORDER BY id DESC LIMIT 0,5');
+$articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC LIMIT 0,5');
 
 ?>
 <!DOCTYPE html>

@@ -1,10 +1,10 @@
 <?php
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=forum_php;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=php_exam;charset=utf8", "root", "");
 session_start();
 if (isset($_SESSION['id'])) {
     if (isset($_GET['id']) and !empty($_GET['id'])) {
         $edit_id = htmlspecialchars($_GET['id']);
-        $edit_article = $bdd->prepare('SELECT * FROM f_topics WHERE id = ?');
+        $edit_article = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
 
         $edit_article->execute(array($edit_id));
         if ($edit_article->rowCount() > 0) {
@@ -13,7 +13,7 @@ if (isset($_SESSION['id'])) {
                 echo "Vous ne pouvez supprimer que vos articles.";
             } else {
                 $suppr_id = htmlspecialchars($_GET['id']);
-                $suppr = $bdd->prepare('DELETE FROM f_topics WHERE id = ?');
+                $suppr = $bdd->prepare('DELETE FROM articles WHERE id = ?');
                 $suppr->execute(array($suppr_id));
                 header('Location: http://127.0.0.1/php_exam/');
             }

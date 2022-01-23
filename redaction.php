@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=forum_php;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=php_exam;charset=utf8", "root", "");
 session_start();
 $r = session_id();
 $mode_edition = 0;
@@ -12,7 +12,7 @@ if (isset($_SESSION['id'])) {
     if (isset($_GET['edit']) and !empty($_GET['edit'])) {
         $mode_edition = 1;
         $edit_id = htmlspecialchars($_GET['edit']);
-        $edit_article = $bdd->prepare('SELECT * FROM f_topics WHERE id = ?');
+        $edit_article = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
         $edit_article->execute(array($edit_id));
         if ($edit_article->rowCount() > 0) {
             $info_article = $edit_article->fetch();
@@ -29,11 +29,11 @@ if (isset($_SESSION['id'])) {
             $article_titre = htmlspecialchars($_POST['article_titre']);
             $article_contenu = htmlspecialchars($_POST['article_contenu']);
             if ($mode_edition == 0) {
-                $ins = $bdd->prepare('INSERT INTO f_topics (sujet, contenu, date_heure_creation) VALUES (?, ?, NOW())');
+                $ins = $bdd->prepare('INSERT INTO articles (sujet, contenu, date_heure_creation) VALUES (?, ?, NOW())');
                 $ins->execute(array($article_titre, $article_contenu));
                 $message = 'Votre article a bien été posté';
             } else {
-                $update = $bdd->prepare('UPDATE f_topics SET sujet = ?, contenu = ?, date_time_edition = NOW() WHERE id = ?');
+                $update = $bdd->prepare('UPDATE articles SET sujet = ?, contenu = ?, date_time_edition = NOW() WHERE id = ?');
                 $update->execute(array($article_titre, $article_contenu, $edit_id));
                 header('Location: http://127.0.0.1/php_exam/redaction.php?edit=' . $edit_id);
                 $message = 'Votre article a bien été mis à jour !';

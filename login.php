@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=forum_php', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam', 'root', '');
 
 if (isset($_POST['formconnexion'])) {
     $mailconnect = htmlspecialchars($_POST['mailconnect']);
     $mdpconnect = sha1($_POST['mdpconnect']);
     if (!empty($mailconnect) and !empty($mdpconnect)) {
-        $requser = $bdd->prepare("SELECT * FROM membres WHERE mail = ? AND motdepasse = ?");
+        $requser = $bdd->prepare("SELECT * FROM users WHERE mail = ? AND motdepasse = ?");
         $requser->execute(array($mailconnect, $mdpconnect));
         $userexist = $requser->rowCount();
         if ($userexist == 1) {

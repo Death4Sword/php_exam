@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=forum_php', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam', 'root', '');
 
 if (isset($_POST['forminscription'])) {
     $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -12,16 +12,16 @@ if (isset($_POST['forminscription'])) {
         if ($pseudolength <= 255) {
             if ($mail == $mail2) {
                 if (filter_var($mail, FILTER_VALIDATE_EMAIL)) {
-                    $reqmail = $bdd->prepare("SELECT * FROM membres WHERE mail = ?");
+                    $reqmail = $bdd->prepare("SELECT * FROM users WHERE mail = ?");
                     $reqmail->execute(array($mail));
                     $mailexist = $reqmail->rowCount();
-                    $requser = $bdd->prepare("SELECT * FROM membres WHERE pseudo = ?");
+                    $requser = $bdd->prepare("SELECT * FROM users WHERE pseudo = ?");
                     $requser->execute(array($pseudo));
                     $userexist = $requser->rowCount();
                     if ($mailexist == 0 && $userexist == 0) {
 
                         if ($mdp == $mdp2) {
-                            $insertmbr = $bdd->prepare("INSERT INTO membres(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
+                            $insertmbr = $bdd->prepare("INSERT INTO users(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
                             $insertmbr->execute(array($pseudo, $mail, $mdp));
                             $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
                         } else {

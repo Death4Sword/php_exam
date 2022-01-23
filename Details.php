@@ -1,8 +1,8 @@
 <?php
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=forum_php;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=php_exam;charset=utf8", "root", "");
 if (isset($_GET['id']) and !empty($_GET['id'])) {
     $get_id = htmlspecialchars($_GET['id']);
-    $article = $bdd->prepare('SELECT * FROM f_topics WHERE id = ?');
+    $article = $bdd->prepare('SELECT * FROM articles WHERE id = ?');
     $article->execute(array($get_id));
     if ($article->rowCount() == 1) {
         $article = $article->fetch();

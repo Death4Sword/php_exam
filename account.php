@@ -1,11 +1,11 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=forum_php', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam', 'root', '');
 
 if (isset($_GET['id']) and $_GET['id'] > 0) {
     $getid = intval($_GET['id']);
-    $requser = $bdd->prepare('SELECT * FROM membres WHERE id = ?');
+    $requser = $bdd->prepare('SELECT * FROM users WHERE id = ?');
     $requser->execute(array($getid));
     $userinfo = $requser->fetch();
 ?>
@@ -29,7 +29,7 @@ if (isset($_GET['id']) and $_GET['id'] > 0) {
             ?>
                 <br />
                 <a href="edit_account.php">Editer mon profil</a>
-                <a href="deconnexion.php">Se déconnecter</a>
+                <a href="logout.php">Se déconnecter</a>
             <?php
             }
             ?>

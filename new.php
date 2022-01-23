@@ -2,7 +2,7 @@
 session_start();
 //require('php/config.php'); /* Contient la connexion à la base de donnée $bdd */
 // $bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'root', '');
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=forum_php', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam', 'root', '');
 $cat = "SELECT * FROM f_categories";
 $souscat = "SELECT * FROM f_souscategories";
 // $result = mysql_query($sql);
@@ -21,7 +21,7 @@ if (isset($_SESSION['id'])) {
                     } else {
                         $notif_mail = 0;
                     }
-                    $ins = $bdd->prepare('INSERT INTO f_topics (id_createur, sujet, contenu, notif_createur, resolu, date_heure_creation) VALUES(?, ?, ?, ?, 0, NOW())');
+                    $ins = $bdd->prepare('INSERT INTO articles (id_createur, sujet, contenu, notif_createur, resolu, date_heure_creation) VALUES(?, ?, ?, ?, 0, NOW())');
 
                     $ins->execute(array($_SESSION['id'], $sujet, $contenu, $notif_mail));
                     var_dump($_POST, $sujet, $ins);
