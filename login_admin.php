@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam_db', 'root', '');
 
 if (isset($_POST['formconnexion'])) {
     $mailconnect = htmlspecialchars($_POST['mailconnect']);
@@ -15,7 +15,7 @@ if (isset($_POST['formconnexion'])) {
             $_SESSION['id'] = $userinfo['id'];
             $_SESSION['pseudo'] = $userinfo['pseudo'];
             $_SESSION['mail'] = $userinfo['mail'];
-            header("Location: Panel_Admin.php");
+            header("Location: admin_panel.php");
         } else {
             $erreur = "Mauvais mail ou mot de passe ou compte non administrateur!";
         }

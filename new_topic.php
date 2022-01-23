@@ -2,7 +2,7 @@
 session_start();
 //require('php/config.php'); /* Contient la connexion à la base de donnée $bdd */
 // $bdd = new PDO('mysql:host=127.0.0.1;dbname=espace_membre', 'root', '');
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam_db', 'root', '');
 $cat = "SELECT * FROM f_categories";
 $souscat = "SELECT * FROM f_souscategories";
 // $result = mysql_query($sql);
@@ -24,7 +24,7 @@ if (isset($_SESSION['id'])) {
                     $ins = $bdd->prepare('INSERT INTO articles (id_createur, sujet, contenu, notif_createur, resolu, date_heure_creation) VALUES(?, ?, ?, ?, 0, NOW())');
 
                     $ins->execute(array($_SESSION['id'], $sujet, $contenu, $notif_mail));
-                    var_dump($_POST, $sujet, $ins);
+                    // var_dump($_POST, $sujet, $ins);
                 } else {
                     $terror = "Votre sujet ne peut pas dépasser 70 caractères";
                 }

@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=php_exam;charset=utf8", "root", "");
+$bdd = new PDO("mysql:host=127.0.0.1;dbname=php_exam_db;charset=utf8", "root", "");
 session_start();
 $r = session_id();
 $mode_edition = 0;
@@ -35,7 +35,7 @@ if (isset($_SESSION['id'])) {
             } else {
                 $update = $bdd->prepare('UPDATE articles SET sujet = ?, contenu = ?, date_time_edition = NOW() WHERE id = ?');
                 $update->execute(array($article_titre, $article_contenu, $edit_id));
-                header('Location: http://127.0.0.1/php_exam/redaction.php?edit=' . $edit_id);
+                header('Location: http://127.0.0.1/php_exam/write_topic.php?edit=' . $edit_id);
                 $message = 'Votre article a bien été mis à jour !';
             }
         } else {

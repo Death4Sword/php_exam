@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam;charset=utf8', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam_db;charset=utf8', 'root', '');
 session_start();
 $requser = $bdd->prepare("SELECT * FROM users WHERE id = ?");
 $requser->execute(array($_SESSION['id']));
@@ -41,7 +41,7 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC LIMIT 0,5');
     <?php if (!isset($message)) { ?>
         <ul>
             <?php while ($m = $membres->fetch()) { ?>
-                <li><?= $m['id'] ?> : <?= $m['pseudo'] ?> - <a href="Panel_Admin.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a></li>
+                <li><?= $m['id'] ?> : <?= $m['pseudo'] ?> - <a href="admin_panel.php?type=membre&supprime=<?= $m['id'] ?>">Supprimer</a></li>
             <?php } ?>
         </ul>
         <br>
@@ -49,12 +49,14 @@ $articles = $bdd->query('SELECT * FROM articles ORDER BY id DESC LIMIT 0,5');
 
             <?php while ($a = $articles->fetch()) { ?>
                 <?= var_dump($a); ?>
-                <li><?= $a['id'] ?> : <?= $a['sujet'] ?> - <a href="Panel_Admin.php?type=article&supprime=<?= $a['id'] ?>">Supprimer</a></li>
+                <li><?= $a['id'] ?> : <?= $a['sujet'] ?> - <a href="admin_panel.php?type=article&supprime=<?= $a['id'] ?>">Supprimer</a></li>
             <?php } ?>
         </ul>
+        <a href="logout.php">Se déconnecter</a>
     <?php } else {
         echo $message;
     } ?>
+    
 
 
 </body>

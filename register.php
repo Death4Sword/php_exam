@@ -1,5 +1,5 @@
 <?php
-$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam', 'root', '');
+$bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam_db', 'root', '');
 
 if (isset($_POST['forminscription'])) {
     $pseudo = htmlspecialchars($_POST['pseudo']);
@@ -23,7 +23,7 @@ if (isset($_POST['forminscription'])) {
                         if ($mdp == $mdp2) {
                             $insertmbr = $bdd->prepare("INSERT INTO users(pseudo, mail, motdepasse) VALUES(?, ?, ?)");
                             $insertmbr->execute(array($pseudo, $mail, $mdp));
-                            $erreur = "Votre compte a bien été créé ! <a href=\"connexion.php\">Me connecter</a>";
+                            $erreur = "Votre compte a bien été créé ! <a href=\"login.php\">Me connecter</a>";
                         } else {
                             $erreur = "Vos mots de passes ne correspondent pas !";
                         }
