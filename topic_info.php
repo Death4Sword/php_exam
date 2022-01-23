@@ -27,5 +27,6 @@ if (isset($_GET['id']) and !empty($_GET['id'])) {
     <h1><?= $titre ?></h1>
     <p><?= $contenu ?></p>
 </body>
+<a href="index.php">Retour à l'Acceuil</a>
 
 </html>

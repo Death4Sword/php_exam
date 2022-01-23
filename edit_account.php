@@ -38,10 +38,15 @@ if (isset($_SESSION['id'])) {
         <meta charset="utf-8">
     </head>
 
+    <a href="index.php">Retour en arrière</a>
+
     <body>
+
         <div align="center">
+
             <h2>Edition de mon profil</h2>
             <div align="left">
+
                 <form method="POST" action="" enctype="multipart/form-data">
                     <label>Pseudo :</label>
                     <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['pseudo']; ?>" /><br /><br />

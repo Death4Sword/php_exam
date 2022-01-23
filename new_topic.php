@@ -25,6 +25,7 @@ if (isset($_SESSION['id'])) {
 
                     $ins->execute(array($_SESSION['id'], $sujet, $contenu, $notif_mail));
                     // var_dump($_POST, $sujet, $ins);
+                    
                 } else {
                     $terror = "Votre sujet ne peut pas dépasser 70 caractères";
                 }

@@ -5,7 +5,7 @@ $bdd = new PDO('mysql:host=127.0.0.1;dbname=php_exam_db', 'root', '');
 
 if (isset($_POST['formconnexion'])) {
     $mailconnect = htmlspecialchars($_POST['mailconnect']);
-    $mdpconnect = sha1($_POST['mdpconnect']);
+    $mdpconnect = md5($_POST['mdpconnect']);
     if (!empty($mailconnect) and !empty($mdpconnect)) {
         $requser = $bdd->prepare("SELECT * FROM users WHERE mail = ? AND motdepasse = ? AND admin = 1");
         $requser->execute(array($mailconnect, $mdpconnect));
@@ -30,6 +30,10 @@ if (isset($_POST['formconnexion'])) {
     <title>Connexion Admin</title>
     <meta charset="utf-8">
 </head>
+
+
+<a href="index.php">Retour à l'Acceuil</a>
+
 
 <body>
     <div align="center">

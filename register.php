@@ -5,8 +5,8 @@ if (isset($_POST['forminscription'])) {
     $pseudo = htmlspecialchars($_POST['pseudo']);
     $mail = htmlspecialchars($_POST['mail']);
     $mail2 = htmlspecialchars($_POST['mail2']);
-    $mdp = sha1($_POST['mdp']);
-    $mdp2 = sha1($_POST['mdp2']);
+    $mdp = md5($_POST['mdp']);
+    $mdp2 = md5($_POST['mdp2']);
     if (!empty($_POST['pseudo']) and !empty($_POST['mail']) and !empty($_POST['mail2']) and !empty($_POST['mdp']) and !empty($_POST['mdp2'])) {
         $pseudolength = strlen($pseudo);
         if ($pseudolength <= 255) {
@@ -122,6 +122,8 @@ if (isset($_POST['forminscription'])) {
                 <tr>
                     <td></td>
                     <td align="center">
+                    <br />
+                    <a href="login.php">Vous avez déjà un compte, connectez vous ici.</a>
                         <br />
                         <input type="submit" name="forminscription" value="Je m'inscris" />
                     </td>

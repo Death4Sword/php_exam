@@ -47,9 +47,11 @@
             <td>Me notifier des réponses par mail</td>
             <td><input type="checkbox" name="tmail" /></td>
         </tr>
+        
         <tr>
-            <td colspan="2"><input type="submit" name="tsubmit" value="Poster le Topic" /></td>
+                <td colspan="2"><input type="submit" name="tsubmit" value="Poster le Topic" /></td>
         </tr>
+        
         <?php if (isset($terror)) { ?>
             <tr>
                 <td colspan="2"><?= $terror ?></td>
@@ -57,3 +59,5 @@
         <?php } ?>
     </table>
 </form>
+
+<a href="index.php">Retour à l'Acceuil</a>

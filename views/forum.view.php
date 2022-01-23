@@ -20,8 +20,6 @@
                     <?= $souscategories ?>
                 </p>
             </td>
-            <td class="sub-info">4083495</td>
-            <td class="sub-info">04.12.2015 à 14h52<br />de PrimFX</td>
         </tr>
     <?php } ?>
 </table>

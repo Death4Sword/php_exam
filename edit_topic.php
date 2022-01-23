@@ -35,7 +35,7 @@ if (isset($_SESSION['id'])) {
             } else {
                 $update = $bdd->prepare('UPDATE articles SET sujet = ?, contenu = ?, date_time_edition = NOW() WHERE id = ?');
                 $update->execute(array($article_titre, $article_contenu, $edit_id));
-                header('Location: http://127.0.0.1/php_exam/write_topic.php?edit=' . $edit_id);
+                header('Location: http://127.0.0.1/php_exam/edit_topic.php?edit=' . $edit_id);
                 $message = 'Votre article a bien été mis à jour !';
             }
         } else {
@@ -70,5 +70,6 @@ if (isset($_SESSION['id'])) {
         echo $message;
     } ?>
 </body>
+<a href="index.php">Retour à l'Acceuil</a>
 
 </html>

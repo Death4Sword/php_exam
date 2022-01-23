@@ -29,6 +29,7 @@ if (isset($_GET['id']) and $_GET['id'] > 0) {
             ?>
                 <br />
                 <a href="edit_account.php">Editer mon profil</a>
+                <a href="index.php">Retour à l'Acceuil</a>
                 <a href="logout.php">Se déconnecter</a>
             <?php
             }
